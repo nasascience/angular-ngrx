@@ -1,0 +1,46 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "name": "Luis",
+      "age": 14,
+      "email": "luis@email.com"
+    },
+    {
+      "name": "Christopher",
+      "age": 4,
+      "email": "chris@email.com",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Jose",
+      "age": 20,
+      "email": "jose@email.com"
+    },
+    {
+      "id": 5,
+      "name": "Santiago",
+      "age": 31,
+      "email": "santiago@email.com"
+    },
+    {
+      "name": "Svetlana Perez",
+      "age": 29,
+      "email": "sveta@email.com",
+      "id": 1602154116857
+    },
+    {
+      "name": "Johan",
+      "age": 34,
+      "email": "johan@email.com",
+      "id": 1602163983976
+    },
+    {
+      "name": "zzz",
+      "age": 444,
+      "email": "zzz",
+      "id": 1602165665805
+    }
+  ]
+}

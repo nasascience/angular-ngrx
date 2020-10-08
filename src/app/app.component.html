@@ -1,4 +1,87 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div class="overlay" [ngStyle]="{'display':display}"></div>
+<!-- Modal -->
+<div class="modal" [ngStyle]="{'display':display}" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ isEditModeEnabled ? 'Edit' : 'Add'}} customer</h5>
+        <button (click)="closeModal(myForm)" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form #myForm="ngForm">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder = 'Enter a name' [(ngModel)]="person.name"  name="name" #name>
+              </div>
+              <div class="form-group">
+                  <input type="number" class="form-control" placeholder = 'Enter your age' [(ngModel)]="person.age" name="age" #age>
+              </div>
+              <div class="form-group">
+                  <input type="email" class="form-control" placeholder = 'Enter your email' [(ngModel)]="person.email" name="email" #email>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="person.id" name="id" #id hidden>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal" (click)="closeModal(myForm)">Close</button>
+        <input *ngIf="!isEditModeEnabled" type="button" class="btn btn-primary" (click)="addCustomer(myForm)" value='Add Client'>
+        <input *ngIf="isEditModeEnabled" type="button" class="btn btn-success"  (click)="updateCustomer(myForm)" value='Update'>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <form
+    style="
+      background: #428bca;
+      padding-top: 20px;
+      margin-top: 20px;
+      padding-bottom: 2px;
+    "
+  >
+    <div class="form-group">
+      <div
+        class="input-group"
+        style="padding-left: 10px; width: 100% !important"
+      >
+        <input id="filter" name="text" placeholder="Search" type="text" />
+        <span
+          id="filterIcon"
+          class="material-icons"
+          style="margin-left: -3px; margin-top: -3px"
+          >search</span
+        >
+      </div>
+    </div>
+  </form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Remove</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.age }}</td>
+        <td>{{ customer.email }}</td>
+        <td>
+          <button (click)="removeClient(customer.id)" class="btn btn-danger btn-remove">Remove<span class="material-icons">
+          delete
+          </span></button></td>
+        <td><button (click)="editClient(customer)" class="btn btn-primary btn-edit">Edit<span class="material-icons">
+          create
+          </span></button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="openModalDialog()" class="btn btn-primary">Add Customer</button>
+</div>
